@@ -5,6 +5,8 @@
 // Why are we implementing this feature?
 // As a user, I want to view the images on the page so that I can browse the photo collection.
 
+
+
 // What are we going to implement?
 // Given that a user opens the application in the browser When the user navigates to the home page Then the photo gallery should display all of the images in the gallery
 
@@ -12,6 +14,43 @@
 // Use AJAX, specifically $.ajax(), to read the provided JSON file.
 // Each object should become a new instance of a constructor function. Refer to the data to determine the necessary properties.
 // Use jQuery to make a copy of the HTML template of the photo component. For each object, fill in the duplicated template with its properties, then append the copy to the DOM.
+constructHorn.prototype.render = function (){
+  
+  $('img').attr('src', this.image)
+  $('img').attr('alt', this.keyword)
+  $('#photo-template').append('<img src="" alt=""> ')
+  // })
+}
+
+function imgRender(arr){
+
+  for(let i = 0; i < arr.length; i++){
+    arr[i].render();
+  }
+}
+
+$.ajax('data/page-1.json', {METHOD: 'GET', DATATYPE: 'JSON'})
+.then(hornData => {
+  hornData.forEach(hornType => {
+    new constructHorn(hornType);
+  })
+})
+
+const hornStorage = [];
+console.log('HORN OBJECT', hornStorage)
+
+console.log('THIS ONE', )
+
+
+function constructHorn(eachOne){
+  this.image = eachOne.image_url;
+  this.title = eachOne.title;
+  this.description = eachOne.description;
+  this.keyword = eachOne.keyword;
+  this.horns = eachOne.horns;
+  hornStorage.push(this);
+}
+imgRender(hornStorage);
 
 // Feature #2: Filter images
 
