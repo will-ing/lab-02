@@ -15,24 +15,21 @@
 // Each object should become a new instance of a constructor function. Refer to the data to determine the necessary properties.
 // Use jQuery to make a copy of the HTML template of the photo component. For each object, fill in the duplicated template with its properties, then append the copy to the DOM.
 constructHorn.prototype.render = function (){
-  
-  $('img').attr('src', this.image)
-  $('img').attr('alt', this.keyword)
-  $('#photo-template').append('<img src="" alt=""> ')
-  // })
-}
+  const tpl = $('#photo-template').html();
+  const $createSection = $('<section></section>');
+  $createSection.html(tpl);
+  $createSection.find('h2').text(this.title);
+  $createSection.find('img').attr('src', this.image);
+  $createSection.find('p').text(this.description);
+  $('main').append($createSection)
+} // got help from Jesse Pena
 
-function imgRender(arr){
 
-  for(let i = 0; i < arr.length; i++){
-    arr[i].render();
-  }
-}
 
 $.ajax('data/page-1.json', {METHOD: 'GET', DATATYPE: 'JSON'})
 .then(hornData => {
   hornData.forEach(hornType => {
-    new constructHorn(hornType);
+    new constructHorn(hornType).render();
   })
 })
 
@@ -50,7 +47,7 @@ function constructHorn(eachOne){
   this.horns = eachOne.horns;
   hornStorage.push(this);
 }
-imgRender(hornStorage);
+
 
 // Feature #2: Filter images
 
