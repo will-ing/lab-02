@@ -1,6 +1,7 @@
 'use strict'
 
 //Feature #1: Display images
+
 const hornStorage = [];
 const keywordArr = [];
 
@@ -11,7 +12,7 @@ console.log('KEYWORD ARR', keywordArr)
 //renders images on html
 constructHorn.prototype.render = function (){
   const tpl = $('#photo-template').html();
-  const $createSection = $('<section></section>');
+  const $createSection = $(`<section class=${this.keyword}></section>`);
   $createSection.html(tpl);
   $createSection.find('h2').text(this.title);
   $createSection.find('img').attr('src', this.image);
@@ -20,7 +21,7 @@ constructHorn.prototype.render = function (){
 } // got help from Jesse Pena. The key was to use .html
 
 
-
+// pulls data from json file
 $.ajax('data/page-1.json', {METHOD: 'GET', DATATYPE: 'JSON'})
 .then(hornData => {
   hornData.forEach(hornType => {
@@ -45,28 +46,27 @@ function constructHorn(eachOne){
 
 // Feature #2: Filter images
 
-// Why are we implementing this feature?
-// As a user, I want to be able to filter the images so that I can view only images that match a keyword.
-
 // shows list in drop down box
 function filterBox() {
   let select = $('#dropdown');
-  select.empty();
   keywordArr.forEach( word => {
     let $options = $(`<option value=${word}>${word}</option>`);
     select.append($options);
   })
 }
 
-// What are we going to implement?
-// Given that a user clicks on the dropdown menu When the user selects one of the options Then only the images whose keyword matches the option should be displayed
 
-// this broken
+// this is fixed. needed to add class to render prototype
 const choices = () => {
   $('select').on('change', function(){
-    if(this.value !== 'All'){
+    console.log($(this).val())
+    let selected = $(this).val()
+    if(selected !== 'default'){
       $('section').hide();
-      $(`section="${this.value}"`).show();
+      console.log(`section id="${this.value}"`);
+      $(`.${this.value}`).show();
+    } else{
+      $('section').show()
     }
   })
 }
