@@ -56,6 +56,8 @@ function filterBox() {
 }
 
 
+
+
 // this is fixed. needed to add class to render prototype
 const choices = () => {
   $('select').on('change', function(){
@@ -72,11 +74,6 @@ const choices = () => {
 }
 
 
-
-
-// How are we implementing it?
-// Create a <select> element which contains unique <option> elements extracted dynamically from the JSON file, one for each keyword.
-// Use an event handler to respond when the user chooses an option from the select menu. Hide all of the images, then show those whose keyword matches the option chosen.
 
 // Feature #3: Style the application
 
