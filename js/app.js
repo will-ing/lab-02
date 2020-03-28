@@ -16,7 +16,6 @@ ConstructHorn.prototype.render = function (){
   trg.append(Mustache.render(tpl, this))
 }
 
-
 const fetchData = (pageNumber) => {
   const options = {
     method:"get",
@@ -32,12 +31,10 @@ const fetchData = (pageNumber) => {
       })
     filterBox();
     choices();
+    numberOfHorns();
   })
   
 }
-
-
-
 
 // constructs images and stores them in a arr
 function ConstructHorn(eachOne){
@@ -65,17 +62,10 @@ function filterBox() {
 // this is fixed. needed to add class to render prototype
 const choices = () => {
   $('select').on('change', function(){
-
-    console.log('WHAT I CLICKED', $(this).val())
-
     let selected = $(this).val()
     if(selected !== 'default'){
-
       $('section').hide();
-
-      $('main').show(`.${selected}`);
-      console.log('CLASS PICKED', `.${selected}`)
-      
+      $(`.${selected}`).show();      
     } else{
       $('section').show()
     }
@@ -90,15 +80,13 @@ const switchPage = function(){
  }
  
  const numberOfHorns = () => {
-  $('label').on('clicked', function(){
-    $('section').hide();
-    
-  })
+
  }
+
  // start page
  fetchData(1);
  switchPage();
- numberOfHorns();
+ 
 
 // Feature 1: Pagination
 
