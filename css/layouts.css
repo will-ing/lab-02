@@ -1,0 +1,10 @@
+section{
+  border: 1px dotted black;
+  text-align: center;
+  display: inline-block;
+ 
+  margin: 20px;
+}
+footer{
+  justify-content: flex-end;
+}

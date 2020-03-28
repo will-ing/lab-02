@@ -2,7 +2,7 @@
 
 //Feature #1: Display images
 const hornStorage = [];
-const keywordArr = ['All'];
+const keywordArr = [];
 
 console.log('HORN OBJECT', hornStorage)
 
@@ -66,7 +66,7 @@ const choices = () => {
   $('select').on('change', function(){
     if(this.value !== 'All'){
       $('section').hide();
-      $(`value=${this.value}`).show();
+      $(`section="${this.value}"`).show();
     }
   })
 }
