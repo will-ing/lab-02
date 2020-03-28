@@ -1,10 +1,21 @@
-section{
-  border: 1px dotted black;
-  text-align: center;
-  display: inline-block;
- 
-  margin: 20px;
+header{
+  display: flex;
+  align-content: center;
+  flex-flow: column wrap;
 }
+
+main{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+}
+
+section{
+  width: 200px;
+  margin: 30px;
+}
+
 footer{
   justify-content: flex-end;
 }
+

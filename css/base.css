@@ -1,6 +1,4 @@
-*{
-  box-sizing: border-box;
-}
+
 
 body{
   width: 100%;
@@ -8,5 +6,5 @@ body{
 }
 
 img{
-  width: 320px;
+  width: 200px;
 }
