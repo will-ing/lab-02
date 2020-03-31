@@ -32,6 +32,7 @@ const fetchData = (pageNumber) => {
     filterBox();
     choices();
     numberOfHorns();
+    console.log(keywordArr)
   })
   
 }
@@ -45,6 +46,12 @@ function ConstructHorn(eachOne){
   this.horns = eachOne.horns;
   hornStorage.push(this);
 }
+
+const checkDuplicates = (hornType) => {
+  if(!keywordArr.includes(hornType.keyword)){keywordArr.push(hornType.keyword)};
+
+}
+
 
 // Feature #2: Filter images
 
@@ -74,7 +81,7 @@ const choices = () => {
 
 const switchPage = function(){
   $('ul').on('click', 'li', function(){
-    $('section').hide();
+    $('section').remove();
     fetchData($(this).attr('id'));
  })
  }
@@ -87,7 +94,9 @@ const switchPage = function(){
  fetchData(1);
  switchPage();
  
-
+ let $h2 = $('h2')
+ $h2
+ console.log('THIS' , $h2.$('li'))
 // Feature 1: Pagination
 
 // Why are we implementing this feature?
