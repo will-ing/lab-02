@@ -34,7 +34,6 @@ const fetchData = (pageNumber) => {
     numberOfHorns();
     console.log(keywordArr)
   })
-  
 }
 
 // constructs images and stores them in a arr
@@ -47,12 +46,6 @@ function ConstructHorn(eachOne){
   hornStorage.push(this);
 }
 
-const checkDuplicates = (hornType) => {
-  if(!keywordArr.includes(hornType.keyword)){keywordArr.push(hornType.keyword)};
-
-}
-
-
 // Feature #2: Filter images
 
 // shows list in drop down box
@@ -63,8 +56,6 @@ function filterBox() {
     select.append($options);
   })
 }
-
-
 
 // this is fixed. needed to add class to render prototype
 const choices = () => {
