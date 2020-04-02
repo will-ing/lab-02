@@ -5,6 +5,46 @@ body{
   font-family: 'Hind Siliguri', sans-serif;
 }
 
+header h1{
+  margin: 0 auto;
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+form{
+  margin: 10px;
+}
+
 img{
-  width: 200px;
+  width: 300px;
+}
+
+#dropdown{
+  height: 50px;
+  font-size: 20px;
+}
+
+ul {
+  display: flex;
+  align-self: center;
+  justify-content:space-between;
+}
+
+li{
+  margin: 20px 30px;
+}
+
+main {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+section{
+  align-self: center;
+  width: 300px;
+
+}
+
+section p{
+  justify-content: ;
 }

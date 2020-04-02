@@ -16,6 +16,10 @@ ConstructHorn.prototype.render = function (){
   trg.append(Mustache.render(tpl, this))
 }
 
+const sortArr = (arr) => {
+  return arr.sort();
+}
+
 const fetchData = (pageNumber) => {
   const options = {
     method:"get",
@@ -32,6 +36,7 @@ const fetchData = (pageNumber) => {
     filterBox();
     choices();
     numberOfHorns();
+    sortArr(keywordArr);
     console.log(keywordArr)
   })
 }

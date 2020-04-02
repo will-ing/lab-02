@@ -1,21 +1,82 @@
+
+@media screen and (min-width: 1100px){
+  body {
+    display: grid;
+    grid-template:
+      [row1-start] "header " [row1-end]
+      [row2-start] "main main main" [row2-end]
+      [row3-start] "main main main" [row3-end]
+      [row4-start] "main main main" [row4-end]
+      [row5-start] "footer " [row5-end]
+      / auto 0px auto;
+  }
+
+  header{
+    display: flex;
+    align-content: center;
+    flex-flow: column wrap;
+  }
+
+  main{
+    display: grid;
+    grid-template:
+      [row2-start] "section section section" [row2-end]
+      [row3-start] "section section section" [row3-end]
+      [row4-start] "section section section" [row4-end];
+    justify-content: space-evenly;  
+  }
+
+  section{
+    width: 200px;
+    margin: 30px;
+  }
+}
+
+@media screen and (min-width: 460px) and (max-width: 1100px){
+  body {
+    display: grid;
+    grid-template:
+      [row1-start] "header" [row1-end]
+      [row2-start] "main main" [row2-end]
+      [row3-start] "main main" [row3-end]
+      [row4-start] "main main" [row4-end]
+      [row5-start] "footer " [row5-end]
+      / auto 0px auto;
+  }
+
+  header{
+    display: flex;
+    align-content: center;
+    flex-flow: column wrap;
+  }
+
+  main{
+    display: grid;
+    grid-template:
+      [row2-start] "section section " [row2-end]
+      [row3-start] "section section " [row3-end]
+      [row4-start] "section section " [row4-end];
+    justify-content: space-evenly;  
+  }
+
+  section{
+    width: 200px;
+    margin: 30px;
+  }
+
+  img{
+    width: 260px;
+  }
+}
+
 header{
   display: flex;
   align-content: center;
   flex-flow: column wrap;
 }
 
-main{
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
-}
-
-section{
-  width: 200px;
-  margin: 30px;
-}
-
 footer{
+
   justify-content: flex-end;
 }
 
