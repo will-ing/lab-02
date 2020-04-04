@@ -2,12 +2,13 @@
 
 //Feature #1: Display images
 
-const hornStorage = [];
 const keywordArr = [];
 
-console.log('HORN OBJECT', hornStorage)
+console.log('HORN OBJECT', ConstructHorn)
 
 console.log('KEYWORD ARR', keywordArr)
+
+// Feature 2: Templating
 
 //renders images on html
 ConstructHorn.prototype.render = function (){
@@ -16,8 +17,10 @@ ConstructHorn.prototype.render = function (){
   trg.append(Mustache.render(tpl, this))
 }
 
+// sorts arr in a-z
 const sortArr = (arr) => {
-  return arr.sort();
+  arr.sort();
+  return arr;
 }
 
 const fetchData = (pageNumber) => {
@@ -33,11 +36,11 @@ const fetchData = (pageNumber) => {
         if(!keywordArr.includes(hornType.keyword)){keywordArr.push(hornType.keyword)};
         
       })
-    filterBox();
-    choices();
-    numberOfHorns();
-    sortArr(keywordArr);
-    console.log(keywordArr)
+      choices();
+      numberOfHorns();
+      sortArr(ConstructHorn.name);
+      sortArr(keywordArr);
+      filterBox();
   })
 }
 
@@ -48,7 +51,6 @@ function ConstructHorn(eachOne){
   this.description = eachOne.description;
   this.keyword = eachOne.keyword;
   this.horns = eachOne.horns;
-  hornStorage.push(this);
 }
 
 // Feature #2: Filter images
@@ -75,6 +77,9 @@ const choices = () => {
   })
 }
 
+// Feature 1: Pagination
+
+// event listener that handles click that decide what page.
 const switchPage = function(){
   $('ul').on('click', 'li', function(){
     $('section').remove();
@@ -82,53 +87,13 @@ const switchPage = function(){
  })
  }
  
- const numberOfHorns = () => {
-
- }
-
- // start page
- fetchData(1);
- switchPage();
- 
- let $h2 = $('h2')
- $h2
- console.log('THIS' , $h2.$('li'))
-// Feature 1: Pagination
-
-// Why are we implementing this feature?
-// As a user, I want to have the ability to view additional images so that my view does not become cluttered.
-// What are we going to implement?
-// Given that a user opens the application in the browser When the user clicks on a button or link to another page Then the other set of images should be dynamically displayed
-
-// How are we implementing it?
-
-// Add navigation for the user to switch between two pages. Each page should render a unique set of images from one of the two provided JSON files.
-// Reset the filters, then repopulate them using only keywords from the images currently being displayed.
-
-// Feature 2: Templating
-
-// Why are we implementing this feature?
-// As a user, I want all of the images to be displayed in a consistent manner, so that it is easy to scan the collection of images.
-
-// What are we going to implement?
-// Given that a user opens the application in the browser When the images are displayed on the screen Then each image should be rendered according to a template
-
-// How are we implementing it?
-// Create the appropriate Mustache template in your HTML with the same <h2>, <img>, and <p> elements as the jQuery template from the prior lab.
-// Refactor the method that renders your images to use Mustache instead of making a copy with jQuery.
-
-// Feature 3: Styling with Flexbox
-
-// Why are we implementing this feature?
-// As a user, I want a simple, clean looking UI so that my photo gallery clearly displays the images.
-
-// What are we going to implement?
-// Given that a user opens the application in the browser When the user navigates to the home page Then the images should be displayed in columns, as screen width allows
-
-// How are we implementing it?
-// Refactor your CSS to use Flexbox instead of floats. You are welcome to use a combination of floats and Flexbox, as you see fit.
-
 // Feature 4: Sort the images
+
+const sortByNameAndNumber = (obj) =>{
+  $('name').on('change', function(){
+    return obj.horns 
+  })
+}
 
 // Why are we implementing this feature?
 // As a user, I want to be able to sort the images so that there is an order to their rendering.
@@ -139,3 +104,8 @@ const switchPage = function(){
 // How are we implementing it?
 // Add the ability for the user to sort the images by either title or by number of horns.
 // Sort the images by one of the properties on page load. This should also apply to the second page of images.
+
+
+// start page
+fetchData(1);
+switchPage();
